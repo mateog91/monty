@@ -15,7 +15,6 @@ int main(int argc, char **argv)
 	while (1)
 	{
 		current_line = get_current_line(current_line, file, line_number);
-		printf("got line\n");
 		command = strtok(current_line, " \n"); /* check for other cases like tabs */
 		if (command == NULL)
 		{
@@ -25,18 +24,15 @@ int main(int argc, char **argv)
 
 		/* get command */
 		func = get_instruction(command, line_number, current_line);
-		printf("got function\n");
 
 		/* call the function*/
 		error_check = func(&head, line_number);
-		printf("executed function\n");
 		if (error_check == -1)
 			_oexit(current_line, file);
 
 		line_number++;
 		free(current_line);
 		current_line = NULL;
-		printf("freed line\n");
 	}
 	return (0);
 }
@@ -85,9 +81,7 @@ FILE *open_file(char *argv)
 
 void _oexit(char *current_line, FILE *file)
 {
-	printf("inside oexit\n");
 	free(current_line);
 	fclose(file);
-
 	exit(EXIT_FAILURE);
 }
