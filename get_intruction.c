@@ -37,13 +37,14 @@ int push(stack_t **stack __attribute__((unused)), unsigned int line_number)
 
 	for (i = 0; number[i] != '\0'; i++)
 	{
-		if (isdigit(number[i]) == 0)
+		if (isdigit(number[i]) == 0 && number[0] != '-')
 		{
 			printf("inside not isdigit\n");
 			fprintf(stderr, "L%i: usage: push integer\n", line_number);
 			return (-1);
 		}
 	}
+
 	real_number = atoi(number);
 	printf("real number is: %i\n", real_number);
 
