@@ -25,7 +25,7 @@ int (*get_instruction(char *command, unsigned int line_number,
 	exit(EXIT_FAILURE);
 }
 
-int push(stack_t **stack __attribute__((unused)), unsigned int line_number)
+int push(stack_t **stack, unsigned int line_number)
 {
 	char *number;
 	int i;
@@ -49,6 +49,7 @@ int push(stack_t **stack __attribute__((unused)), unsigned int line_number)
 	printf("real number is: %i\n", real_number);
 
 	/* ADD THE NEW NODE */
+	add_node(stack, real_number);
 
 	return (0);
 }
