@@ -2,8 +2,7 @@
 
 /**
  * add_node - add node at the start of stack
- * 
- * @head: pointer to first node 
+ * @head: pointer to first node
  * @n: integer in new node
  *
  * Return: pointer to new node
