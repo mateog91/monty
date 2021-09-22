@@ -25,18 +25,30 @@ int (*get_instruction(char *command, unsigned int line_number,
 	exit(EXIT_FAILURE);
 }
 
-int push(stack_t **stack __attribute__((unused)), unsigned int line_number __attribute__((unused)))
+int push(stack_t **stack __attribute__((unused)), unsigned int line_number)
 {
 	char *number;
-
-	number = strtok(NULL, " \n");
-	if (isdigit(number) != 0)
-	{
-		fprintf(stderr, "L%i: usage: push intege", line_number);
-		return (-1);
-	}
+	int i;
+	int real_number;
 
 	printf("we are in push\n");
+	number = strtok(NULL, " \n");
+	printf("after strtok\n");
+
+	for (i = 0; number[i] != '\0'; i++)
+	{
+		if (isdigit(number[i]) == 0)
+		{
+			printf("inside not isdigit\n");
+			fprintf(stderr, "L%i: usage: push integer\n", line_number);
+			return (-1);
+		}
+	}
+	real_number = atoi(number);
+	printf("real number is: %i\n", real_number);
+
+	/* ADD THE NEW NODE */
+
 	return (0);
 }
 int pall(stack_t **stack __attribute__((unused)), unsigned int line_number __attribute__((unused)))
