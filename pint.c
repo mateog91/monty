@@ -12,6 +12,6 @@
  * 
  * Return: 0 on succes, exit with EXIT_FAILURE on failure
  */
-int push(stack_t **stack, unsigned int line_number)
+/*int push(stack_t **stack, unsigned int line_number)
 {
-}
+}*/

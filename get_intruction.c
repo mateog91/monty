@@ -41,7 +41,11 @@ int push(stack_t **stack, unsigned int line_number)
 	int real_number;
 
 	number = strtok(NULL, " \n");
-
+	if (number == NULL)
+	{
+		fprintf(stderr, "L%i: usage: push integer\n", line_number);
+		return (-1);
+	}
 	for (i = 0; number[i] != '\0'; i++)
 	{
 		if (isdigit(number[i]) == 0 && number[0] != '-')
