@@ -39,9 +39,9 @@ typedef struct instruction_s
 void _oexit(char *current_line, FILE *file);
 void check_argc(int argc);
 FILE *open_file(char *argv);
-char *get_current_line(char *current_line, FILE *file, size_t line_number);
+char *get_current_line(char *current_line, FILE *file);
 /* Instruction Functions*/
-int (*get_instruction(char *command, unsigned int line_number,
+int (*get_inst(char *command, unsigned int line_number,
 		      char *current_line))(stack_t **, unsigned int);
 int push(stack_t **stack, unsigned int line_number);
 int pall(stack_t **stack, unsigned int line_number);

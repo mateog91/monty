@@ -1,11 +1,13 @@
 #include "monty.h"
 /**
- * get_instruction - finds the command
- *
+ * get_inst - finds the command
+ * @command: command
+ * @line_number: line number
+ * @current_line: the current line
+ * Return: pointer to function
  */
 
-int (*get_instruction(char *command, unsigned int line_number,
-		      char *current_line))(stack_t **, unsigned int)
+int (*get_inst(char *command, unsigned int line_number, char *current_line))()
 {
 	int i;
 
@@ -25,36 +27,56 @@ int (*get_instruction(char *command, unsigned int line_number,
 	exit(EXIT_FAILURE);
 }
 
+/**
+  * push - push a node to the stack
+  * @stack: head pointer to the stack
+  * @line_number: the number of the current line
+  * Return: 0 if success, -1 if an error ocurred
+  */
+
 int push(stack_t **stack, unsigned int line_number)
 {
 	char *number;
 	int i;
 	int real_number;
 
-	printf("we are in push\n");
 	number = strtok(NULL, " \n");
-	printf("after strtok\n");
 
 	for (i = 0; number[i] != '\0'; i++)
 	{
 		if (isdigit(number[i]) == 0 && number[0] != '-')
 		{
-			printf("inside not isdigit\n");
 			fprintf(stderr, "L%i: usage: push integer\n", line_number);
 			return (-1);
 		}
 	}
 
 	real_number = atoi(number);
-	printf("real number is: %i\n", real_number);
 
 	/* ADD THE NEW NODE */
 	add_node(stack, real_number);
 
 	return (0);
 }
-int pall(stack_t **stack __attribute__((unused)), unsigned int line_number __attribute__((unused)))
+
+/**
+  * pall - prints all the stack
+  * @stack: head pointer to srack
+  * @line_number: number of the current line
+  * Return: 0 if success, -1 if an error ocurred
+  */
+
+int pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
-	printf("we are in pall\n");
+	stack_t *current;
+
+	if ((*stack) == NULL)
+		return (0);
+	current = (*stack);
+	while (current != NULL)
+	{
+		printf("%d\n", current->n);
+		current = current->next;
+	}
 	return (0);
 }

@@ -2,8 +2,7 @@
 
 /**
  * add_node - add node at the start of stack
- * 
- * @head: pointer to first node 
+ * @head: pointer to first node
  * @n: integer in new node
  *
  * Return: pointer to new node
@@ -30,7 +29,5 @@ stack_t *add_node(stack_t **head, int n)
 
 	/* Set head to first node */
 	*head = new;
-	printf("head number is: %i\n", (*head)->n);
-
 	return (new);
 }

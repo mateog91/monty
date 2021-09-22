@@ -1,5 +1,12 @@
 #include "monty.h"
 
+/**
+  * main - main function for monty interpreter
+  * @argc: number of arguments
+  * @argv: arguments
+  * Return: always 0
+  */
+
 int main(int argc, char **argv)
 {
 	FILE *file;
@@ -14,8 +21,7 @@ int main(int argc, char **argv)
 	file = open_file(argv[1]);
 	while (1)
 	{
-		current_line = get_current_line(current_line, file, line_number);
-		printf("got line\n");
+		current_line = get_current_line(current_line, file);
 		command = strtok(current_line, " \n"); /* check for other cases like tabs */
 		if (command == NULL)
 		{
@@ -24,24 +30,28 @@ int main(int argc, char **argv)
 		}
 
 		/* get command */
-		func = get_instruction(command, line_number, current_line);
-		printf("got function\n");
+		func = get_inst(command, line_number, current_line);
 
 		/* call the function*/
 		error_check = func(&head, line_number);
-		printf("executed function\n");
 		if (error_check == -1)
 			_oexit(current_line, file);
 
 		line_number++;
 		free(current_line);
 		current_line = NULL;
-		printf("freed line\n");
 	}
 	return (0);
 }
 
-char *get_current_line(char *current_line, FILE *file, size_t line_number)
+/**
+  * get_current_line - gets the current line
+  * @current_line: pointer to the current line
+  * @file: pointer to the file
+  * Return: pointer to the current line
+  */
+
+char *get_current_line(char *current_line, FILE *file)
 {
 	ssize_t line_len = 0;
 	size_t size, i;
@@ -49,17 +59,19 @@ char *get_current_line(char *current_line, FILE *file, size_t line_number)
 	line_len = getline(&current_line, &size, file);
 	if (line_len == EOF)
 	{
-		printf("EOF reached, final line: %ld\n", line_number);
 		free(current_line);
 		exit(EXIT_SUCCESS);
 	}
 	for (i = 0; current_line[i] != '\n' && line_len > 0; i++)
 		;
 	current_line[i] = '\0';
-
-	printf("line #%ld = %s\n", line_number, current_line);
 	return (current_line);
 }
+
+/**
+  * check_argc - checks if there is 2 arguments
+  * @argc: number of arguments
+  */
 
 void check_argc(int argc)
 {
@@ -69,6 +81,12 @@ void check_argc(int argc)
 		exit(EXIT_FAILURE);
 	}
 }
+
+/**
+  * open_file - open the file
+  * @argv: arguments
+  * Return: file pointer
+  */
 
 FILE *open_file(char *argv)
 {
@@ -83,11 +101,15 @@ FILE *open_file(char *argv)
 	return (file);
 }
 
+/**
+  * _oexit - exits the file and frees the line
+  * @current_line: current line
+  * @file: file pointer
+  */
+
 void _oexit(char *current_line, FILE *file)
 {
-	printf("inside oexit\n");
 	free(current_line);
 	fclose(file);
-
 	exit(EXIT_FAILURE);
 }
