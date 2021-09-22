@@ -1,3 +1,4 @@
+/* alias mont="gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o monty" */
 #ifndef MONTY_H
 #define MONTY_H
 
