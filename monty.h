@@ -46,4 +46,7 @@ int (*get_instruction(char *command, unsigned int line_number,
 int push(stack_t **stack, unsigned int line_number);
 int pall(stack_t **stack, unsigned int line_number);
 
+/* Stack Functions */
+stack_t *add_node(stack_t **head, int n);
+
 #endif /* MONTY_H */
