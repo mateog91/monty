@@ -39,5 +39,9 @@ typedef struct instruction_s
 void check_argc(int argc);
 FILE *open_file(char *argv);
 char *get_current_line(char *current_line, FILE *file, size_t line_number);
-
+/* Instruction Functions*/
+void (*get_instruction(char *command, unsigned int line_number,
+		       char *current_line))(stack_t **, unsigned int);
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
 #endif /* MONTY_H */
