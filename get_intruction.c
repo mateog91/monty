@@ -4,8 +4,8 @@
  *
  */
 
-void (*get_instruction(char *command, unsigned int line_number,
-		       char *current_line))(stack_t **, unsigned int)
+int (*get_instruction(char *command, unsigned int line_number,
+		      char *current_line))(stack_t **, unsigned int)
 {
 	int i;
 
@@ -25,11 +25,22 @@ void (*get_instruction(char *command, unsigned int line_number,
 	exit(EXIT_FAILURE);
 }
 
-void push(stack_t **stack __attribute__((unused)), unsigned int line_number __attribute__((unused)))
+int push(stack_t **stack __attribute__((unused)), unsigned int line_number __attribute__((unused)))
 {
+	char *number;
+
+	number = strtok(NULL, " \n");
+	if (isdigit(number) != 0)
+	{
+		fprintf(stderr, "L%i: usage: push intege", line_number);
+		return (-1);
+	}
+
 	printf("we are in push\n");
+	return (0);
 }
-void pall(stack_t **stack __attribute__((unused)), unsigned int line_number __attribute__((unused)))
+int pall(stack_t **stack __attribute__((unused)), unsigned int line_number __attribute__((unused)))
 {
 	printf("we are in pall\n");
+	return (0);
 }

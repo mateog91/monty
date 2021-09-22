@@ -5,27 +5,30 @@ int main(int argc, char **argv)
 	FILE *file;
 	size_t line_number = 1;
 	char *current_line = NULL;
-	char *tokens[2];
-	void (*func)(stack_t **, unsigned int);
+	char *command;
+	int (*func)(stack_t **, unsigned int);
 	stack_t *head = NULL; /* declaring and initializing head */
+	int error_check = 0;
 
 	check_argc(argc);
 	file = open_file(argv[1]);
 	while (1)
 	{
 		current_line = get_current_line(current_line, file, line_number);
-		tokens[0] = strtok(current_line, " \n"); /* check for other cases like tabs */
-		if (tokens[0] == NULL)
+		command = strtok(current_line, " \n"); /* check for other cases like tabs */
+		if (command == NULL)
 		{
 			line_number++;
 			continue;
 		}
-		tokens[1] = strtok(NULL, " \n");
+
 		/* get command */
-		func = get_instruction(tokens[0], line_number, current_line);
+		func = get_instruction(command, line_number, current_line);
 
 		/* call the function*/
-		func(&head, line_number);
+		error_check = func(&head, line_number);
+		if (error_check == -1)
+			_oexit(current_line, file);
 
 		line_number++;
 		free(current_line);
@@ -74,4 +77,11 @@ FILE *open_file(char *argv)
 		exit(EXIT_FAILURE);
 	}
 	return (file);
+}
+
+void _oexit(char *current_line, FILE *file)
+{
+	free(current_line);
+	fclose(file);
+	exit(EXIT_FAILURE);
 }
