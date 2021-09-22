@@ -1,5 +1,12 @@
 #include "monty.h"
 
+/**
+  * main - main function for monty interpreter
+  * @argc: number of arguments
+  * @argv: arguments
+  * Return: always 0
+  */
+
 int main(int argc, char **argv)
 {
 	FILE *file;
@@ -23,7 +30,7 @@ int main(int argc, char **argv)
 		}
 
 		/* get command */
-		func = get_instruction(command, line_number, current_line);
+		func = get_inst(command, line_number, current_line);
 
 		/* call the function*/
 		error_check = func(&head, line_number);
@@ -36,6 +43,14 @@ int main(int argc, char **argv)
 	}
 	return (0);
 }
+
+/**
+  * get_current_line - gets the current line
+  * @current_line: pointer to the current line
+  * @file: pointer to the file
+  * @line_number: number of the line
+  * Return: pointer to the current line
+  */
 
 char *get_current_line(char *current_line, FILE *file, size_t line_number)
 {
@@ -57,6 +72,11 @@ char *get_current_line(char *current_line, FILE *file, size_t line_number)
 	return (current_line);
 }
 
+/**
+  * check_argc - checks if there is 2 arguments
+  * @argc: number of arguments
+  */
+
 void check_argc(int argc)
 {
 	if (argc != 2)
@@ -65,6 +85,12 @@ void check_argc(int argc)
 		exit(EXIT_FAILURE);
 	}
 }
+
+/**
+  * open_file - open the file
+  * @argv: arguments
+  * Return: file pointer
+  */
 
 FILE *open_file(char *argv)
 {
@@ -78,6 +104,12 @@ FILE *open_file(char *argv)
 	}
 	return (file);
 }
+
+/**
+  * _oexit - exits the file and frees the line
+  * @current_line: current line
+  * @file: file pointer
+  */
 
 void _oexit(char *current_line, FILE *file)
 {
