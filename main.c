@@ -7,6 +7,7 @@ int main(int argc, char **argv)
 	char *current_line = NULL;
 	char *tokens[2];
 	void (*func)(stack_t **, unsigned int);
+	stack_t *head = NULL; /* declaring and initializing head */
 
 	check_argc(argc);
 	file = open_file(argv[1]);
@@ -22,12 +23,13 @@ int main(int argc, char **argv)
 		tokens[1] = strtok(NULL, " \n");
 		/* get command */
 		func = get_instruction(tokens[0], line_number, current_line);
-		if (func != NULL)
-			printf("returning corresponding function\n");
-		/* call the function*/
 
-		printf("command is: %s\n", tokens[0]);
+		/* call the function*/
+		func(&head, line_number);
+
 		line_number++;
+		free(current_line);
+		current_line = NULL;
 	}
 	return (0);
 }
@@ -35,7 +37,7 @@ int main(int argc, char **argv)
 char *get_current_line(char *current_line, FILE *file, size_t line_number)
 {
 	ssize_t line_len = 0;
-	size_t size;
+	size_t size, i;
 
 	line_len = getline(&current_line, &size, file);
 	if (line_len == EOF)
@@ -44,7 +46,11 @@ char *get_current_line(char *current_line, FILE *file, size_t line_number)
 		free(current_line);
 		exit(EXIT_SUCCESS);
 	}
-	printf("line #%ld = %s", line_number, current_line);
+	for (i = 0; current_line[i] != '\n' && line_len > 0; i++)
+		;
+	current_line[i] = '\0';
+
+	printf("line #%ld = %s\n", line_number, current_line);
 	return (current_line);
 }
 
