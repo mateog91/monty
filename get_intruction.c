@@ -52,7 +52,6 @@ int push(stack_t **stack, unsigned int line_number)
 	}
 
 	real_number = atoi(number);
-	printf("real number is: %i\n", real_number);
 
 	/* ADD THE NEW NODE */
 	add_node(stack, real_number);

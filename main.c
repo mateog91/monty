@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 	file = open_file(argv[1]);
 	while (1)
 	{
-		current_line = get_current_line(current_line, file, line_number);
+		current_line = get_current_line(current_line, file);
 		command = strtok(current_line, " \n"); /* check for other cases like tabs */
 		if (command == NULL)
 		{
@@ -48,11 +48,10 @@ int main(int argc, char **argv)
   * get_current_line - gets the current line
   * @current_line: pointer to the current line
   * @file: pointer to the file
-  * @line_number: number of the line
   * Return: pointer to the current line
   */
 
-char *get_current_line(char *current_line, FILE *file, size_t line_number)
+char *get_current_line(char *current_line, FILE *file)
 {
 	ssize_t line_len = 0;
 	size_t size, i;
@@ -60,15 +59,12 @@ char *get_current_line(char *current_line, FILE *file, size_t line_number)
 	line_len = getline(&current_line, &size, file);
 	if (line_len == EOF)
 	{
-		printf("EOF reached, final line: %ld\n", line_number);
 		free(current_line);
 		exit(EXIT_SUCCESS);
 	}
 	for (i = 0; current_line[i] != '\n' && line_len > 0; i++)
 		;
 	current_line[i] = '\0';
-
-	printf("line #%ld = %s\n", line_number, current_line);
 	return (current_line);
 }
 

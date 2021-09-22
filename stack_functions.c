@@ -29,7 +29,5 @@ stack_t *add_node(stack_t **head, int n)
 
 	/* Set head to first node */
 	*head = new;
-	printf("head number is: %i\n", (*head)->n);
-
 	return (new);
 }
