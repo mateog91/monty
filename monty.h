@@ -38,5 +38,6 @@ typedef struct instruction_s
 
 void check_argc(int argc);
 FILE *open_file(char *argv);
+char *get_current_line(char *current_line, FILE *file, size_t line_number);
 
 #endif /* MONTY_H */
