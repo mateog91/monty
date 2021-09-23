@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 		/* printf("line #%ld: %s\n", line_number, current_line);*/
 
 		command = strtok(current_line, " \n"); /* check for other cases like tabs */
-		if (command == NULL)
+		if (command == NULL || command[0] == '#')
 		{
 			line_number++;
 			continue;
