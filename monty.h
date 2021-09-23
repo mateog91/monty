@@ -48,5 +48,7 @@ int pall(stack_t **stack, unsigned int line_number);
 /* Stack Functions */
 stack_t *add_node(stack_t **head, int n);
 void free_stack(stack_t *head);
+int pop(stack_t **head, unsigned int index);
+int delete_node(stack_t **head, unsigned int index);
 
 #endif /* MONTY_H */

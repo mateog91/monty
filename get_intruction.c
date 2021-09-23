@@ -13,6 +13,7 @@ int (*get_inst(char *command, unsigned int line_number))()
 	instruction_t array_instructions[] = {
 	    {"push", push},
 	    {"pall", pall},
+		{"pop", pop},
 	    {NULL, NULL}};
 
 	for (i = 0; array_instructions[i].opcode != NULL; i++)
@@ -80,5 +81,23 @@ int pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
 		printf("%d\n", current->n);
 		current = current->next;
 	}
+	return (0);
+}
+
+/**
+  * pop - deletes the node at top of the stack
+  * @stack: header pointer to stack
+  * @line_number: number of the line
+  * Return: 0 success, otherwise -1
+  */
+
+int pop(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%i: can't pop an empty stack\n", line_number);
+		return (-1);
+	}
+	delete_node(stack, 0);
 	return (0);
 }
