@@ -15,6 +15,7 @@ int (*get_inst(char *command, unsigned int line_number))()
 	    {"pall", pall},
 	    {"pop", pop},
 	    {"pint", pint},
+		{"swap", swap},
 	    {"add", add},
 	    {"nop", nop},
 	    {NULL, NULL}};
