@@ -49,3 +49,18 @@ int add(stack_t **head, unsigned int line_number)
 	return (0);
 	printf("after return");
 }
+
+/**
+ * nop - does nothing
+ * @head: pointer to first node
+ * @line_number: number of current line
+
+ * Return: always 0
+ */
+int nop(stack_t **head, unsigned int line_number)
+{
+	(void)head;
+	(void)line_number;
+
+	return (0);
+}
