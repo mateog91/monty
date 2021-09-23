@@ -1,5 +1,12 @@
 #include "monty.h"
 
+/**
+  * swap - swaps 2 last nodes
+  * @stack: stack
+  * @line_number: line number
+  * Return: 0
+  */
+
 int swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *second_node, *third_node;
