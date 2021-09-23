@@ -32,7 +32,7 @@ int mul(stack_t **head, unsigned int line_number)
 }
 
 /**
- * mod - mode top 2 numbers of stack
+ * modu - mode top 2 numbers of stack
  * @head: pointer to first node
  * @line_number: number of current line
  * Description:
