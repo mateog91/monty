@@ -53,5 +53,6 @@ int delete_node(stack_t **head, unsigned int index);
 int pint(stack_t **head, unsigned int line_number);
 int add(stack_t **head, unsigned int line_number);
 int nop(stack_t **head, unsigned int line_number);
+int sub(stack_t **head, unsigned int line_number);
 
 #endif /* MONTY_H */
