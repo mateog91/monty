@@ -14,7 +14,7 @@ int (*get_inst(char *command, unsigned int line_number))()
 	    {"push", push},
 	    {"pall", pall},
 	    {"pop", pop},
-	    {"pint", pop},
+	    {"pint", pint},
 	    {NULL, NULL}};
 
 	for (i = 0; array_instructions[i].opcode != NULL; i++)
@@ -48,7 +48,7 @@ int push(stack_t **stack, unsigned int line_number)
 	}
 	for (i = 0; number[i] != '\0'; i++)
 	{
-		if (number[0] == '-')
+		if (number[i] == '-' && i == 0)
 			continue;
 		if (isdigit(number[i]) == 0)
 		{
