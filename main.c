@@ -101,7 +101,7 @@ FILE *open_file(char *argv)
 	file = fopen(argv, "r");
 	if (file == NULL)
 	{
-		fprintf(stderr, "Error: can't open the file %s\n", argv);
+		fprintf(stderr, "Error: Can't open file %s\n", argv);
 		exit(EXIT_FAILURE);
 	}
 	return (file);
