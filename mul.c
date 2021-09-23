@@ -56,7 +56,7 @@ int modu(stack_t **head, unsigned int line_number)
 	}
 	if (current->n == 0)
 	{
-		fprintf(stderr, "L%i: division by zero", line_number);
+		fprintf(stderr, "L%i: division by zero\n", line_number);
 		return (-1);
 	}
 	opp = current->next->n % current->n;
