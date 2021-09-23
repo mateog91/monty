@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 	file = open_file(argv[1]);
 	while (1)
 	{
-		current_line = get_current_line(current_line, file);
+		current_line = get_current_line(current_line, file, head);
 		/*printf("line #%ld: %s\n", line_number, current_line);*/
 
 		command = strtok(current_line, " \n"); /* check for other cases like tabs */
@@ -53,7 +53,7 @@ int main(int argc, char **argv)
   * Return: pointer to the current line
   */
 
-char *get_current_line(char *current_line, FILE *file)
+char *get_current_line(char *current_line, FILE *file, stack_t *head)
 {
 	ssize_t line_len = 0;
 	size_t size, i;
@@ -62,6 +62,8 @@ char *get_current_line(char *current_line, FILE *file)
 	if (line_len == EOF)
 	{
 		free(current_line);
+		free_stack(head);
+		fclose(file);
 		exit(EXIT_SUCCESS);
 	}
 	for (i = 0; current_line[i] != '\n' && line_len > 0; i++)

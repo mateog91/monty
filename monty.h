@@ -39,7 +39,7 @@ typedef struct instruction_s
 void _oexit(char *current_line, FILE *file);
 void check_argc(int argc);
 FILE *open_file(char *argv);
-char *get_current_line(char *current_line, FILE *file);
+char *get_current_line(char *current_line, FILE *file, stack_t *head);
 /* Instruction Functions*/
 int (*get_inst(char *command, unsigned int line_number,
 		      char *current_line))(stack_t **, unsigned int);
@@ -48,5 +48,6 @@ int pall(stack_t **stack, unsigned int line_number);
 
 /* Stack Functions */
 stack_t *add_node(stack_t **head, int n);
+void free_stack(stack_t *head);
 
 #endif /* MONTY_H */
