@@ -20,7 +20,7 @@ int (*get_inst(char *command, unsigned int line_number))()
 	    {"nop", nop},
 	    {"sub", sub},
 	    {"mul", mul},
-	    {"div", div},
+	    {"div", divi},
 	    {NULL, NULL}};
 
 	for (i = 0; array_instructions[i].opcode != NULL; i++)

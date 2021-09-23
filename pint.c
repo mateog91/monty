@@ -93,7 +93,7 @@ int sub(stack_t **head, unsigned int line_number)
  *
  * Return: 0 on succes, -1 on failure
  */
-int div(stack_t **head, unsigned int line_number)
+int divi(stack_t **head, unsigned int line_number)
 {
 	stack_t *current = *head;
 	int opp;
