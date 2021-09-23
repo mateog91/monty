@@ -3,7 +3,6 @@
  * get_inst - finds the command
  * @command: command
  * @line_number: line number
- * @current_line: the current line
  * Return: pointer to function
  */
 

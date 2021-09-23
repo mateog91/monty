@@ -111,6 +111,7 @@ FILE *open_file(char *argv)
   * _oexit - exits the file and frees the line
   * @current_line: current line
   * @file: file pointer
+  * @head: head pointer to stack
   */
 
 void _oexit(char *current_line, FILE *file, stack_t *head)
