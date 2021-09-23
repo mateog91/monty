@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 	while (1)
 	{
 		current_line = get_current_line(current_line, file, head);
-		/*printf("line #%ld: %s\n", line_number, current_line);*/
+		/* printf("line #%ld: %s\n", line_number, current_line);*/
 
 		command = strtok(current_line, " \n"); /* check for other cases like tabs */
 		if (command == NULL)
