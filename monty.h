@@ -57,5 +57,6 @@ int nop(stack_t **head, unsigned int line_number);
 int sub(stack_t **head, unsigned int line_number);
 int mul(stack_t **head, unsigned int line_number);
 int divi(stack_t **head, unsigned int line_number);
+int modu(stack_t **head, unsigned int line_number);
 
 #endif /* MONTY_H */
