@@ -81,7 +81,7 @@ int sub(stack_t **head, unsigned int line_number)
 }
 
 /**
- * div - divides top 2 numbers of stack
+ * divi - divides top 2 numbers of stack
  * @head: pointer to first node
  * @line_number: number of current line
  * Description:
@@ -108,7 +108,7 @@ int divi(stack_t **head, unsigned int line_number)
 		fprintf(stderr, "L%i: division by zero", line_number);
 		return (-1);
 	}
-	opp = current->n / current->next->n;
+	opp = current->next->n / current->n;
 	(*head) = (*head)->next;
 	(*head)->prev = NULL;
 	(*head)->n = opp;
@@ -120,7 +120,7 @@ int divi(stack_t **head, unsigned int line_number)
  * nop - does nothing
  * @head: pointer to first node
  * @line_number: number of current line
-
+ *
  * Return: always 0
  */
 int nop(stack_t **head, unsigned int line_number)
