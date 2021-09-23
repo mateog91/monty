@@ -15,9 +15,10 @@ int (*get_inst(char *command, unsigned int line_number))()
 	    {"pall", pall},
 	    {"pop", pop},
 	    {"pint", pint},
-		{"swap", swap},
+	    {"swap", swap},
 	    {"add", add},
 	    {"nop", nop},
+	    {"sub", sub},
 	    {NULL, NULL}};
 
 	for (i = 0; array_instructions[i].opcode != NULL; i++)
