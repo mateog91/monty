@@ -9,7 +9,7 @@
 
 int swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *second_node, *third_node;
+	stack_t *second_node = NULL, *third_node = NULL;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
@@ -26,7 +26,10 @@ int swap(stack_t **stack, unsigned int line_number)
 	second_node->prev = (*stack)->prev;
 	second_node->next = (*stack);
 	(*stack)->prev = second_node;
-	(*stack)->next = third_node;
+	if (third_node != NULL)
+		(*stack)->next = third_node;
+	else
+		(*stack)->next = NULL;
 	*stack = second_node;
 	return (0);
 }
