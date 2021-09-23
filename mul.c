@@ -1,3 +1,5 @@
+#include "monty.h"
+
 /**
  * mul - mul top 2 numbers of stack
  * @head: pointer to first node
@@ -17,14 +19,14 @@ int mul(stack_t **head, unsigned int line_number)
 
 	if (current == NULL || current->next == NULL)
 	{
-		fprintf(stderr, "L%i: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%i: can't mul, stack too short\n", line_number);
 		return (-1);
 	}
 
 	opp = current->n * current->next->n;
 	(*head) = (*head)->next;
 	(*head)->prev = NULL;
-	(*head)->n = multi;
+	(*head)->n = opp;
 	free(current);
 	return (0);
 }
