@@ -50,6 +50,7 @@ int main(int argc, char **argv)
   * get_current_line - gets the current line
   * @current_line: pointer to the current line
   * @file: pointer to the file
+  * @head: head pointer to stack
   * Return: pointer to the current line
   */
 
