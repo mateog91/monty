@@ -7,7 +7,7 @@
  * Return: pointer to function
  */
 
-int (*get_inst(char *command, unsigned int line_number, char *current_line))()
+int (*get_inst(char *command, unsigned int line_number))()
 {
 	int i;
 
@@ -23,8 +23,7 @@ int (*get_inst(char *command, unsigned int line_number, char *current_line))()
 	}
 	/* if not found then error message and exit*/
 	fprintf(stderr, "L%i: unknown instruction %s\n", line_number, command);
-	free(current_line);
-	exit(EXIT_FAILURE);
+	return (NULL);
 }
 
 /**

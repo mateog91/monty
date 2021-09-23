@@ -32,12 +32,13 @@ int main(int argc, char **argv)
 		}
 
 		/* get command */
-		func = get_inst(command, line_number, current_line);
-
+		func = get_inst(command, line_number);
+		if (func == NULL)
+			_oexit(current_line, file, head);
 		/* call the function*/
 		error_check = func(&head, line_number);
 		if (error_check == -1)
-			_oexit(current_line, file);
+			_oexit(current_line, file, head);
 
 		line_number++;
 		free(current_line);
@@ -112,9 +113,10 @@ FILE *open_file(char *argv)
   * @file: file pointer
   */
 
-void _oexit(char *current_line, FILE *file)
+void _oexit(char *current_line, FILE *file, stack_t *head)
 {
 	free(current_line);
+	free_stack(head);
 	fclose(file);
 	exit(EXIT_FAILURE);
 }

@@ -36,13 +36,12 @@ typedef struct instruction_s
 	char *opcode;
 	int (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-void _oexit(char *current_line, FILE *file);
+void _oexit(char *current_line, FILE *file, stack_t *head);
 void check_argc(int argc);
 FILE *open_file(char *argv);
 char *get_current_line(char *current_line, FILE *file, stack_t *head);
 /* Instruction Functions*/
-int (*get_inst(char *command, unsigned int line_number,
-		      char *current_line))(stack_t **, unsigned int);
+int (*get_inst(char *command, unsigned int line_number))();
 int push(stack_t **stack, unsigned int line_number);
 int pall(stack_t **stack, unsigned int line_number);
 
