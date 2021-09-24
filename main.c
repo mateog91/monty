@@ -22,7 +22,6 @@ int main(int argc, char **argv)
 	while (1)
 	{
 		current_line = get_current_line(current_line, file, head);
-		/* printf("line #%ld: %s\n", line_number, current_line);*/
 
 		command = strtok(current_line, " \n"); /* check for other cases like tabs */
 		if (command == NULL || command[0] == '#')
@@ -61,6 +60,7 @@ char *get_current_line(char *current_line, FILE *file, stack_t *head)
 	size_t size, i;
 
 	line_len = getline(&current_line, &size, file);
+
 	if (line_len == EOF)
 	{
 		free(current_line);
@@ -68,8 +68,10 @@ char *get_current_line(char *current_line, FILE *file, stack_t *head)
 		fclose(file);
 		exit(EXIT_SUCCESS);
 	}
+
 	for (i = 0; current_line[i] != '\n' && line_len > 0; i++)
 		;
+
 	current_line[i] = '\0';
 	return (current_line);
 }

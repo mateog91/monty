@@ -21,11 +21,11 @@ int pchar(stack_t **head, unsigned int line_number)
 		return (-1);
 	}
 	number = (*head)->n;
-	if (number >= 0 && number <= 255)
+	if (number >= 32 && number <= 126)
 		printf("%c\n", number);
 	else
 	{
-		fprintf(stderr, "L%i: can't pchar, value out of range", line_number);
+		fprintf(stderr, "L%i: can't pchar, value out of range\n", line_number);
 		return (-1);
 	}
 	return (0);
